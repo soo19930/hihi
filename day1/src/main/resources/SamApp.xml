@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="sam" class="com.ezen.soo1.Sample">
+<!-- id= 객체명 객체는 DTO 클래스는 전체경로가 나와야함-->
+
+<!-- 생성자방식 데이터입력 -->
+<constructor-arg value="56"></constructor-arg>
+<constructor-arg value="33"></constructor-arg>
+
+<!-- 세터겟터 -->
+<property name="first" value="88"></property>
+<property name="second" value="11"></property>
+
+</bean>
+
+</beans>
