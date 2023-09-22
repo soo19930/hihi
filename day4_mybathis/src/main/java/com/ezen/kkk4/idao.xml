@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezen.kkk4.Service"> 
+<!-- namespace="서비스인터페이스가 있는 경로입력" -->
+  <insert id="inserta"> 
+<!--   		id는 서비스의 클래스이름 --> 
+<!-- 		쿼리문은 ; 찍으면 안됨 -->
+	insert into my0907 values(#{param1},#{param2},#{param3})
+  
+  </insert>
+
+<!-- 	select문에는 resultType에 dto클래스 경로를 적어줘야함 -->
+	<select id="out" resultType="com.ezen.kkk4.MyDTO">
+	select * from my0907
+	
+	</select>
+
+</mapper>
