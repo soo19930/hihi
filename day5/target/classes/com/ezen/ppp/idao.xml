@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezen.ppp.Service">
+
+  <insert id="inserta" parameterType="com.ezen.ppp.MyDTO">
+   insert into my0908 values (#{id},#{name},#{tell},#{address})
+  </insert>
+
+	<select id="outb" resultType="com.ezen.ppp.MyDTO">
+	
+		select*from my0908
+		
+	</select>
+	
+	<delete id="delete">
+		delete from my0908 where id= #{id}
+	
+	</delete>
+	
+	<select id="mo" resultType="com.ezen.ppp.MyDTO">
+	
+		select*from my0908 where id= #{id}
+		
+	</select>
+	
+	<insert id="mot" parameterType="com.ezen.ppp.MyDTO">
+	
+		update my0908 set name=#{name}, tell=#{tell},address=#{address} where id=#{id}
+	</insert>
+	
+</mapper>
