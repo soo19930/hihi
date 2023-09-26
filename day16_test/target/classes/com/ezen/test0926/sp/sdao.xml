@@ -62,6 +62,20 @@ ORDER BY saledate DESC
 	  from sp0926)A)
    where rn between #{start} AND #{end}
 </select>
+
+<select id="spreply" resultType="com.ezen.test0926.sp.SpDTO">
+select * from sp0926 where num=#{param1}
+</select>
+
+<insert id="insertreplyr">
+insert into sp0926 (num,spname,name,saledate,spec,price,image,cnt,groups,step,indent)
+values (num.nextval,#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},0,#{param8},#{param9},#{param10})
+</insert>
+
+<update id="stepup">
+update sp0926 set step=step+1 where groups=#{param1} and step>#{param2}
+</update>
+
 </mapper>
 
 
