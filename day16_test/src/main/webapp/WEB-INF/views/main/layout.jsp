@@ -33,8 +33,8 @@
 	width: 100%;
 }
 #footer {
-position:relative;
-top:200px;
+position:absolute;
+bottom:0;
 	width: 100%;
 	text-align: center;
 	font-size: 20px;
