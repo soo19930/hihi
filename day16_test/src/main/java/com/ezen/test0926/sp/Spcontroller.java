@@ -139,6 +139,48 @@ public class Spcontroller {
          return "spout3";
       }
 	
+  	@RequestMapping(value="spreply", method = RequestMethod.POST)
+  	public String spreply(HttpServletRequest request, Model mo) {
+  		int num = Integer.parseInt(request.getParameter("num"));
+  		Service ss = sqlSession.getMapper(Service.class);
+  		
+  		ArrayList<SpDTO> list = ss.spreply(num);
+  		mo.addAttribute("list",list);
+  		return "spreplyview";
+  	}
+  	
+  	@RequestMapping(value="spreplysave", method = RequestMethod.POST)
+  	public String spreply(MultipartHttpServletRequest multi) throws Exception, IOException {
+  		int num = Integer.parseInt(multi.getParameter("num"));
+  		String spname = multi.getParameter("spname");
+  		String name = multi.getParameter("name");
+  		String saledate = multi.getParameter("saledate");
+  		String spec = multi.getParameter("spec");
+  		int price = Integer.parseInt(multi.getParameter("price"));
+  		String image = multi.getParameter("image");
+  		
+  		MultipartFile mf = multi.getFile("image");
+  		image = mf.getOriginalFilename();
+  		Service ss = sqlSession.getMapper(Service.class);
+  		mf.transferTo(new File(image_path+"\\"+image));
+  		
+  		int groups = Integer.parseInt(multi.getParameter("groups"));		
+  		int step = Integer.parseInt(multi.getParameter("step"));		
+  		int indent = Integer.parseInt(multi.getParameter("indent"));		
+  		
+  		stepup(groups, step);
+  		step++;
+  		indent++;
+  		ss.insertreplyr(num,spname,name,saledate,spec,price,image,groups,step,indent);
+  		return "main";
+  	}
+  	
+  	public void stepup(int groups, int step) {
+  		Service ss = sqlSession.getMapper(Service.class);
+  		ss.stepup(groups,step);
+  	}
+      
+      
     //∆‰¿Ã¬° √≥∏Æ
 	  @RequestMapping(value="/spoutpage")
   public String ko16(HttpServletRequest request, PageDTO dto,Model mo) {
@@ -162,5 +204,7 @@ public class Spcontroller {
      mo.addAttribute("list",notice.selectnotice(dto));
      return "spoutpage";
   }
+	  
+	  
       
 }

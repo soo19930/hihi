@@ -17,6 +17,10 @@ public interface Service {
 	public ArrayList<SpDTO> out3();
 	public int cntnotice();
 	public ArrayList<SpDTO> selectnotice(PageDTO dto);
+	public ArrayList<SpDTO> spreply(int num);
+	public void insertreplyr(int num,String spname,String name,String saledate,
+			String spec,int price,String image,int groups,int step,int indent);
+	public void stepup(int groups, int step);
 	}
 	
 

@@ -48,7 +48,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/sp/spsearchview.jsp"/>
 	</definition>
 	
-	
+	<definition name="spreplyview" extends="baseLayout">
+		<put-attribute name="title" value="메인화면"/>
+		<put-attribute name="body" value="/WEB-INF/views/sp/spreplyview.jsp"/>
+	</definition>
 	
 	
 	
