@@ -18,6 +18,13 @@
       <a class="navbar-brand" href="main" id="maintext">MAIN</a>
     </div>
     <ul class="nav navbar-nav">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">회원관리<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="memberinput">회원입력</a></li>
+          <li><a href="memberout">회원출력</a></li>
+          <li><a href="membersearchform">회원검색</a></li>
+        </ul>
+      </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">상품판매<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="spinput">판매상품입력</a></li>
@@ -27,12 +34,6 @@
         </ul>
       </li>
       
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">성적관리<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="scoreinput">성적입력</a></li>
-          <li><a href="scoreoutpage">성적출력</a></li>
-        </ul>
-      </li>
       
      </ul>
 <c:choose>

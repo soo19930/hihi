@@ -1,0 +1,35 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezen.test0926.member.Service">
+<insert id="meminput">
+insert into member0926 values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8})
+</insert>
+<select id="memout" resultType="com.ezen.test0926.member.MemberDTO">
+select * from member0926
+</select>
+<delete id="memdelete">
+delete from member0926 where id=#{param1}
+</delete>
+<select id="memmodiform" resultType="com.ezen.test0926.member.MemberDTO">
+select * from member0926 where id=#{param1}
+</select>
+<update id="memmodify">
+update member0926 set pw=#{param2},name=#{param3},tell=#{param4},sb=#{param5},
+					  address=#{param6},hobby=#{param7},memo=#{param8} where id=#{param1}
+</update>
+<select id="memsearchviewid" resultType="com.ezen.test0926.member.MemberDTO">
+select * from member0926 where id like '%'|| #{param1} ||'%'
+</select>
+<select id="memsearchviewname" resultType="com.ezen.test0926.member.MemberDTO">
+select * from member0926 where name like '%'|| #{param1} ||'%'
+</select>
+<select id="memsearchviewadd" resultType="com.ezen.test0926.member.MemberDTO">
+select * from member0926 where address like '%'|| #{param1} ||'%'
+</select>
+<select id="login" resultType="com.ezen.test0926.member.MemberDTO">
+select * from member0926 where id=#{param1} and pw=#{param2}
+</select>
+
+</mapper>
