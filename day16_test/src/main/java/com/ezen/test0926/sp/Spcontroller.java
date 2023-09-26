@@ -23,7 +23,7 @@ public class Spcontroller {
 	
 	ArrayList<SpDTO> list = new ArrayList<SpDTO>();
 	
-	static String image_path="C:\\6ªÍ¥Î∆Ø\\spring\\day16_test\\src\\main\\webapp\\image";
+	static String image_path="C:\\Users\\3-23\\git\\hihi2\\day16_test\\src\\main\\webapp\\image";
 	@RequestMapping(value = "/spinput")
 	public String f(){
 		return "spinput";
@@ -114,10 +114,10 @@ public class Spcontroller {
 	@RequestMapping(value = "/spsearchview", method = RequestMethod.POST)
 	public String f8(HttpServletRequest request, Model mo) {
 		String spitem = request.getParameter("spitem");
-		String query = request.getParameter("query");
+		String spvalue = request.getParameter("spvalue");
 		Service ss = sqlSession.getMapper(Service.class);
-		if(spitem.equals("spname")) list = ss.spsearchspname(query);
-		else list = ss.spsearchname(query);
+		if(spitem.equals("sname")) list = ss.spsearchspname(spvalue);
+		else list = ss.spsearchname(spvalue);
 		mo.addAttribute("list", list);
 		
 		return "spsearchview";
@@ -139,7 +139,7 @@ public class Spcontroller {
          return "spout3";
       }
 	
-  	@RequestMapping(value="spreply", method = RequestMethod.POST)
+  	@RequestMapping(value="spreply")
   	public String spreply(HttpServletRequest request, Model mo) {
   		int num = Integer.parseInt(request.getParameter("num"));
   		Service ss = sqlSession.getMapper(Service.class);
@@ -157,13 +157,11 @@ public class Spcontroller {
   		String saledate = multi.getParameter("saledate");
   		String spec = multi.getParameter("spec");
   		int price = Integer.parseInt(multi.getParameter("price"));
-  		String image = multi.getParameter("image");
-  		
   		MultipartFile mf = multi.getFile("image");
-  		image = mf.getOriginalFilename();
-  		Service ss = sqlSession.getMapper(Service.class);
-  		mf.transferTo(new File(image_path+"\\"+image));
+		String fname = mf.getOriginalFilename();
+		mf.transferTo(new File(image_path+"\\"+fname));
   		
+  		Service ss = sqlSession.getMapper(Service.class);
   		int groups = Integer.parseInt(multi.getParameter("groups"));		
   		int step = Integer.parseInt(multi.getParameter("step"));		
   		int indent = Integer.parseInt(multi.getParameter("indent"));		
@@ -171,7 +169,7 @@ public class Spcontroller {
   		stepup(groups, step);
   		step++;
   		indent++;
-  		ss.insertreplyr(num,spname,name,saledate,spec,price,image,groups,step,indent);
+  		ss.insertreplyr(num,spname,name,saledate,spec,price,fname,groups,step,indent);
   		return "main";
   	}
   	

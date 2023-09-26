@@ -9,8 +9,12 @@
 </head>
 
 <header style="text-align: center; background-color:#7e9d60; ">
+<<<<<<< HEAD
 	<h1 id="title">개인정보 관리2211</h1>
 
+=======
+	<h1 id="title">개인정보 관리</h1>
+>>>>>>> refs/remotes/origin/master
 </header>
 
 <nav class="navbar navbar-inverse">

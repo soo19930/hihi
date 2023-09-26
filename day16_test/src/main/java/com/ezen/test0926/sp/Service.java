@@ -11,8 +11,8 @@ public interface Service {
 	public void cnt(int num);
 	public ArrayList<SpDTO> mo1(int num);
 	public void mo2(int num,String spname,String name,String saledate,String spec,int price,String fname);
-	public ArrayList<SpDTO> spsearchspname(String query);
-	public ArrayList<SpDTO> spsearchname(String query);
+	public ArrayList<SpDTO> spsearchspname(String spvalue);
+	public ArrayList<SpDTO> spsearchname(String spvalue);
 	 public ArrayList<SpDTO> out2();
 	public ArrayList<SpDTO> out3();
 	public int cntnotice();

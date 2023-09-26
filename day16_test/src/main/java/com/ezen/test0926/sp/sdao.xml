@@ -10,7 +10,7 @@ values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{p
 </insert>
 
 <select id="out" resultType="com.ezen.test0926.sp.SpDTO">
-select * from sp0926
+select * from sp0926 order by groups desc,step asc
 </select>
 
 <delete id="delete">
@@ -69,11 +69,13 @@ select * from sp0926 where num=#{param1}
 
 <insert id="insertreplyr">
 insert into sp0926 (num,spname,name,saledate,spec,price,image,cnt,groups,step,indent)
-values (num.nextval,#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},0,#{param8},#{param9},#{param10})
+values (q_number_seq.nextval,#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},0,#{param8},#{param9},#{param10})
 </insert>
 
 <update id="stepup">
+<![CDATA[ 
 update sp0926 set step=step+1 where groups=#{param1} and step>#{param2}
+]]>
 </update>
 
 </mapper>

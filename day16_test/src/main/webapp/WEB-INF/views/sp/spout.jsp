@@ -20,9 +20,13 @@
 <c:forEach items="${list}" var="aa">
 <tr>
 <td><a href="delete?num=${aa.num }">${aa.num}</a></td>
-<td><a href="detail?num=${aa.num }">${aa.spname}</a></td>
+<td align="left">
+<c:forEach var="i" begin="1" end="${aa.indent }" step="1"> ↳re:</c:forEach>
+<a href="detail?num=${aa.num }">${aa.spname}</a>
+</td>
 <td>${fn:substring(aa.saledate,0,10)}</td>
 <td>${aa.price}</td>
+
 <td><img id="img1" src="/test0926/image/${aa.image}" height="30px"></td>
 <td>${aa.cnt}</td>
 </tr>
@@ -33,7 +37,7 @@
 		 		<option value="sname">상품명</option>
 		 		<option value="name">상호명</option>
 		 	</select>
-        <input type="text" name="query">
+        <input type="text" name="spvalue">
         <input type="submit" value="검색">
     </form>
 </div>
