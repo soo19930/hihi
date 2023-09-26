@@ -1,0 +1,67 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezen.test0926.sp.Service">
+
+<insert id="inserts">
+insert into sp0926 (num,spname,name,saledate,spec,price,image,groups)
+values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param1})
+</insert>
+
+<select id="out" resultType="com.ezen.test0926.sp.SpDTO">
+select * from sp0926
+</select>
+
+<delete id="delete">
+delete from sp0926 where num=#{param1}
+</delete>
+
+<select id="detail" resultType="com.ezen.test0926.sp.SpDTO">
+select * from sp0926 where num=#{param1}
+</select>
+
+<update id="cnt">
+update sp0926 set cnt=cnt+1 where num=#{param1}
+</update>
+
+<select id="mo1" resultType="com.ezen.test0926.sp.SpDTO">
+select * from sp0926 where num=#{param1}
+</select>
+
+<update id="mo2">
+update sp0926 set spname=#{param2}, name=#{param3}, saledate=#{param4}, spec=#{param5}, price=#{param6}, image=#{param7} where num=#{param1}
+</update>
+
+<select id="spsearchspname" resultType="com.ezen.test0926.sp.SpDTO">
+select * from sp0926 where spname like '%'|| #{param1} ||'%'
+</select>
+<select id="spsearchname" resultType="com.ezen.test0926.sp.SpDTO">
+select * from sp0926 where name like '%'|| #{param1} ||'%'
+</select>
+
+<select id="out2" resultType="com.ezen.test0926.sp.SpDTO">
+select spname,sum(price) as ptot from sp0926
+group by spname
+</select>
+
+<select id="out3" resultType="com.ezen.test0926.sp.SpDTO">
+SELECT saledate,SUM(price) AS ptot
+FROM sp0926
+GROUP BY saledate
+ORDER BY saledate DESC
+</select>
+
+<select id="cntnotice" resultType="int">
+   select count(*) from sp0926
+</select>
+<!-- 페이징처리에서 게시글 조회 22222222 -->
+<select id="selectnotice" resultType="com.ezen.test0926.sp.SpDTO">
+   select * from (
+   select rownum rn,A.* from(  
+	  from sp0926)A)
+   where rn between #{start} AND #{end}
+</select>
+</mapper>
+
+
